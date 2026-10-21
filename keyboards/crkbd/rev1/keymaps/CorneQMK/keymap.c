@@ -18,23 +18,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // use the following command to generate a keymap.json file to be used with keymap drawer
 // qmk c2json -kb crkbd/rev1 -km CorneQMK /home/cyb3rkun/corne_qmk_userspace/keyboards/crkbd/rev1/keymaps/CorneQMK/keymap.c > /home/cyb3rkun/corne_qmk_userspace/layouts/crkbd/rev1/keymaps/CorneQMK/keymap.json 2>&1
 #include QMK_KEYBOARD_H
-#include "combos.h"
 // #include "quantum.h"
 //
 
 enum layers  {
-    BASE,        // 0 Base Layer
-    NAV,         // 1 Navigation
-    NS,     // 2 Numbers & Symboyls
-    FN,    // 3 Function Keys
-    MOUSE_NAV,   // 4 Mouse Navigation
-    UTILS,   // 5 Utilities (keyboard settings)
-    PROD_A,      // 6 productivity
-    PROD_B,      // 7
-    GAMING_A,    // 8 Gaming
-    GAMING_B,    // 9
-    GAMING_C,    // 10
+    BASE,       // 0 Base Layer
+    GALLIUM,    // GALLIUM
+    NAV,        // 1 Navigation
+    NS,         // 2 Numbers & Symboyls
+    FN,         // 3 Function Keys
+    MOUSE_NAV,  // 4 Mouse Navigation
+    UTILS,      // 5 Utilities (keyboard settings)
+    PROD_A,     // 6 productivity
+    PROD_B,     // 7
+    GAMING_A,   // 8 Gaming
+    GAMING_B,   // 9
+    GAMING_C,   // 10
 };
+#include "combos.h"
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_split_3x6_3(
   //|-----------------------------------------------------|  |-----------------------------------------------------|
@@ -47,6 +48,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_LGUI, MO(NAV),  KC_SPC,     KC_ENT,  MO(NS), KC_LALT
                              //|--------------------------|  |--------------------------'
 
+  ),
+    [GALLIUM] = LAYOUT_split_3x6_3(
+  //|-----------------------------------------------------|  |-----------------------------------------------------|
+       KC_TAB,    KC_B,    KC_L,    KC_D,    KC_C,    KC_V,       KC_J,    KC_Y,    KC_O,    KC_U, KC_QUOT, KC_BSPC,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+      KC_LCTL,    KC_N,    KC_R,    KC_T,    KC_S,    KC_G,       KC_P,    KC_H,    KC_A,    KC_E,    KC_I,  KC_ESC,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+      KC_LSFT,    KC_X,    KC_Q,    KC_M,    KC_W,    KC_Z,       KC_K,    KC_F, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+                                 KC_LGUI, MO(NAV),  KC_SPC,     KC_ENT,  MO(NS), KC_LALT
+                             //|--------------------------|  |--------------------------'
   ),
 
     [NAV] = LAYOUT_split_3x6_3(

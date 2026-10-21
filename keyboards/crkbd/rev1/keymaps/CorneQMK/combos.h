@@ -70,11 +70,13 @@ const uint16_t PROGMEM hash[] = {KC_Z, KC_X, COMBO_END};
 // Utilities
 // capslock
 const uint16_t PROGMEM capslock[] = {KC_LSFT, KC_RSFT, COMBO_END};
+const uint16_t PROGMEM toggle_gallium[] = {KC_LCTL, KC_ESC, COMBO_END};
 
 // underscore
 // const uint16_t PROGMEM backslash[] = {KC_L, KC_QUOT, COMBO_END};
 
 combo_t key_combos[] = {
+    COMBO(toggle_gallium, TG(GALLIUM)),
     COMBO(semcol, KC_SCLN),
     COMBO(colon, KC_COLN),
 
