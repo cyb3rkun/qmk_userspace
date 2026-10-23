@@ -1,4 +1,19 @@
+# Global Configuration (Applies to all files)
 CompileFlags:
-  Add: [-Wno-unknown-attributes, -Wno-maybe-uninitialized, -Wno-unknown-warning-option]
-  Remove: [-W*, -mmcu=*, -mcpu=*, -mfpu=*, -mfloat-abi=*, -mno-unaligned-access, -mno-thumb-interwork, -mcall-prologues, -D__has_include*]
-  Compiler: clang
+  Add: [ "-ferror-limit=0" ]
+
+Index:
+  ExternalRules:
+    QueryDriver: [ "/usr/bin/avr-gcc", "/usr/bin/arm-none-eabi-gcc", "/usr/bin/newlib-nano" ]
+
+---
+# Header Specific Configuration (Separated by ---)
+If:
+  PathMatch: .*\.h
+
+CompileFlags:
+  Add:
+    - "-xc"  # Force clangd to treat headers as C code instead of C++
+    - "-include"
+    - "keymap.c" # Implicitly feeds the core keymap definitions into your header indexing
+
