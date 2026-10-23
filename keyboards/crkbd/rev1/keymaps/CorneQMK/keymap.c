@@ -17,6 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // use the following command to generate a keymap.json file to be used with keymap drawer
 // qmk c2json -kb crkbd/rev1 -km CorneQMK /home/cyb3rkun/corne_qmk_userspace/keyboards/crkbd/rev1/keymaps/CorneQMK/keymap.c > /home/cyb3rkun/corne_qmk_userspace/layouts/crkbd/rev1/keymaps/CorneQMK/keymap.json 2>&1
+#include <stdint.h>
+#include "action_layer.h"
 #include QMK_KEYBOARD_H
 // #include "quantum.h"
 //
@@ -36,6 +38,16 @@ enum layers  {
     GAMING_C,   // 10
 };
 #include "combos.h"
+
+uint8_t combo_ref_from_layer(uint8_t layer){
+    switch(get_highest_layer(layer_state)){
+        case GALLIUM: return BASE;
+    }
+    return layer;
+}
+
+// COMBO_REF_LAYER(GALLIUM, BASE)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_split_3x6_3(
   //|-----------------------------------------------------|  |-----------------------------------------------------|
