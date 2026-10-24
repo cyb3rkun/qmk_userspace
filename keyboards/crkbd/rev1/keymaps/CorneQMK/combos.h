@@ -87,7 +87,8 @@ const uint16_t PROGMEM r_ctrl[]	    = {KC_J, KC_L, COMBO_END};
 // underscore
 // const uint16_t PROGMEM backslash[] = {KC_L, KC_QUOT, COMBO_END};
 
-combo_t key_combos[]			    = {
+
+ combo_t key_combos[]			    = {
 	COMBO(toggle_gallium, TG(GALLIUM)),
 	COMBO(l_alt, KC_LALT),
 	COMBO(r_ctrl, KC_LCTL),
@@ -124,7 +125,5 @@ combo_t key_combos[]			    = {
 	COMBO(hash, KC_HASH),
 
 	COMBO(capslock, KC_CAPS),
-// COMBO_REF_LAYER(GALLIUM, BASE)
 };
 
-// COMBO_REF_LAYER(GALLIUM, BASE)

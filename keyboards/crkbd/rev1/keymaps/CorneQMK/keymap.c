@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // qmk c2json -kb crkbd/rev1 -km CorneQMK /home/cyb3rkun/corne_qmk_userspace/keyboards/crkbd/rev1/keymaps/CorneQMK/keymap.c > /home/cyb3rkun/corne_qmk_userspace/layouts/crkbd/rev1/keymaps/CorneQMK/keymap.json 2>&1
 #include <stdint.h>
 #include "action_layer.h"
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
 // #include "quantum.h"
 //
@@ -46,7 +47,6 @@ uint8_t combo_ref_from_layer(uint8_t layer){
     return layer;
 }
 
-// COMBO_REF_LAYER(GALLIUM, BASE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_split_3x6_3(
@@ -111,81 +111,81 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [UTILS] = LAYOUT_split_3x6_3(
   //|-----------------------------------------------------|  |-----------------------------------------------------|
-      QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      QK_BOOT, RM_PREV, RM_NEXT,   BL_UP, BL_DOWN,   KC_NO,    BL_TOGG,  BL_ON,   BL_OFF, UG_NEXT, UG_PREV,   KC_NO,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,TG(UTILS),     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU, RM_SPDU,TG(UTILS),     KC_NO, UG_SPDU, UG_VALU, UG_SATU, UG_HUEU, UG_TOGG,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      RM_NEXT, RM_HUED, RM_SATD, RM_VALD, RM_SPDD,   KC_NO,      KC_NO, UG_SPDD, UG_VALD, UG_SATD, UG_HUED,   KC_NO,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                  KC_LGUI, KC_TRNS,  KC_SPC,     KC_ENT, KC_TRNS, KC_RALT
                              //`--------+--------+--------|  |--------+--------+--------'
   ),
 
-  [PROD_A] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.  ,-----------------------------------------------------.
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P7,   KC_P8,   KC_P9,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                MO(PROD_B), KC_LALT,  KC_SPC,   KC_ENT, KC_P0, KC_RALT
-                             //`--------------------------'  `--------------------------'
-  ),
+  // [PROD_A] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.  ,-----------------------------------------------------.
+  //       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P7,   KC_P8,   KC_P9,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     KC_LCTL,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     KC_LSFT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //                               MO(PROD_B), KC_LALT,  KC_SPC,   KC_ENT, KC_P0, KC_RALT
+  //                            //`--------------------------'  `--------------------------'
+  // ),
 
-  [GAMING_A] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.  ,-----------------------------------------------------.
-      QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                 KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
-                             //`--------------------------'  `--------------------------'
-  ),
-  [PROD_B] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.  ,-----------------------------------------------------.
-      KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P7,   KC_P8,   KC_P9,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                 KC_TRNS, KC_LALT,  KC_SPC,     KC_ENT,   KC_P0, KC_RALT
-                             //`--------------------------'  `--------------------------'
-  ),
-
-  [GAMING_B] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.  ,-----------------------------------------------------.
-      QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                 KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
-                             //`--------------------------'  `--------------------------'
-  ),
-
-  [GAMING_C] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.  ,-----------------------------------------------------.
-      QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                 KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
-                             //`--------------------------'  `--------------------------'
-  ),
+  // [GAMING_A] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.  ,-----------------------------------------------------.
+  //     QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //                                KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
+  //                            //`--------------------------'  `--------------------------'
+  // ),
+  // [PROD_B] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.  ,-----------------------------------------------------.
+  //     KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P7,   KC_P8,   KC_P9,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //                                KC_TRNS, KC_LALT,  KC_SPC,     KC_ENT,   KC_P0, KC_RALT
+  //                            //`--------------------------'  `--------------------------'
+  // ),
+  //
+  // [GAMING_B] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.  ,-----------------------------------------------------.
+  //     QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //                                KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
+  //                            //`--------------------------'  `--------------------------'
+  // ),
+  //
+  // [GAMING_C] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.  ,-----------------------------------------------------.
+  //     QK_BOOT,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_TOGG, RM_HUEU, RM_SATU, RM_VALU,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //     RM_NEXT, RM_HUED, RM_SATD, RM_VALD,   KC_NO,   KC_NO,      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+  // //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+  //                                KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
+  //                            //`--------------------------'  `--------------------------'
+  // ),
 };
 
-#ifdef ENCODER_MAP_ENABLE
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-  [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-  [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-  [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-};
-#endif
+// #ifdef ENCODER_MAP_ENABLE
+// const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+//   [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+//   [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+//   [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+//   [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+// };
+// #endif
